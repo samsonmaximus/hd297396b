@@ -1,0 +1,52 @@
+HD 297396 HARPS nightly radial velocities                         (Fraser, 2026)
+================================================================================
+A 4.27-day Neptune-mass planet candidate around the K dwarf HD 297396
+in 18 years of archival HARPS velocities
+    Fraser S.
+    <Open Journal of Astrophysics, submitted (2026)>
+================================================================================
+Keywords: planets and satellites: detection - techniques: radial velocities -
+          stars: individual: HD 297396
+
+Description:
+    Nightly binned HARPS radial velocities and activity indicators of
+    HD 297396 (104 epochs, 2004-2021) from HARPS-RVBank (Perdelwitz et al.
+    2024, J/A+A/683/A125, table4.dat as corrected 2026-04-20). Spectra are
+    binned by night and instrument label after the rejection criteria of
+    the paper (2 of 108 spectra rejected).
+
+File Summary:
+--------------------------------------------------------------------------------
+ FileName        Lrecl  Records   Explanations
+--------------------------------------------------------------------------------
+ReadMe             80        .   This file
+hd297396_rv.dat   155      104   Nightly velocities and indicators
+heldout.dat        80        3   The three later HARPS spectra (DRS)
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: hd297396_rv.dat
+--------------------------------------------------------------------------------
+   Bytes Format Units   Label     Explanations
+--------------------------------------------------------------------------------
+   1-  13  F13.5  d       BJD       Barycentric Julian Date (TDB), weighted nightly mean
+  15-  22  F8.2   m/s     RVs       SERVAL radial velocity, nightly zero-point corrected
+  24-  29  F6.2   m/s     e_RVs     Uncertainty on RVs
+  31-  40  F10.2  m/s     RVd       DRS radial velocity, nightly zero-point corrected
+  42-  47  F6.2   m/s     e_RVd     Uncertainty on RVd
+  49-  56  F8.1   m2/s2   dLW       SERVAL differential line width
+  58-  63  F6.1   m2/s2   e_dLW     Uncertainty on dLW
+  65-  72  F8.5   ---     Halpha    H-alpha index
+  74-  81  F8.5   ---     NaD1      Na I D1 index
+  83-  90  F8.5   ---     NaD2      Na I D2 index
+  92-  98  F7.4   km/s    FWHM      DRS CCF full width at half maximum
+ 100- 106  F7.3   %       Contrast  DRS CCF contrast
+ 108- 115  F8.4   km/s    BIS       DRS CCF bisector span
+ 117- 124  F8.2   m/s/Np  CRX       SERVAL chromatic index
+ 126- 132  F7.3   ---     logRHK    log10 R'HK from HARPS-RVBank, nightly mean (PHOENIX-based; not the Mount Wilson scale, see Table 2; blank if unavailable)
+ 134- 140  A7     ---     Label     Instrument label (pre_072, pre_183, pre_oth, post)
+ 142- 155  A14    ---     Prog      ESO programme ID
+--------------------------------------------------------------------------------
+
+Note: the epoch at BJD 2454922.53 is the discrepant night discussed in the paper;
+      it is included here and in the primary analysis.
+================================================================================

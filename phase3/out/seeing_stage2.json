@@ -1,0 +1,11 @@
+[
+ ["serval", true,  "gauss",    "2p1c2c", "power",  null],
+ ["serval", false, "gauss",    "0p",     "power",  null],
+ ["serval", false, "gauss",    "1p1c",   "power",  null],
+ ["drs",    true,  "gauss",    "0p",     "power",  null],
+ ["drs",    true,  "gauss",    "1p1c",   "power",  null],
+ ["serval", true,  "studentt", "0p",     "power",  null],
+ ["serval", true,  "studentt", "1p1c",   "power",  null],
+ ["serval", true,  "gauss",    "0p",     "thresh", 1.30],
+ ["serval", true,  "gauss",    "0p",     "thresh", 1.70]
+]

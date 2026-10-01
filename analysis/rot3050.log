@@ -1,0 +1,14 @@
+rejected C2 2 C3 0 C4 1 kept 106
+<string>:29: RuntimeWarning: Mean of empty slice
+<string>:29: RuntimeWarning: Mean of empty slice
+epochs 104 {'pre_072': 47, 'pre_oth': 33, 'post': 14, 'pre_183': 10} median err 1.3592115
+band 30-50 {'max': 13.88565110621298, 'at': 46.7124070897655, 'thr1': 20.211667064177288}
+band 15-25 {'max': 13.683407116707752, 'at': 20.435217608804724, 'thr1': 21.2621520895569}
+band 10-16.67 {'max': 10.993748994426195, 'at': 13.884163680208154, 'thr1': 22.003181892202292}
+K=3.5 recovered 0.625
+K=4.0 recovered 0.805
+K=4.5 recovered 0.895
+K=5.0 recovered 0.978
+fwd 4.5 {'frac': 0.0, 'p99': 9.27160316030969, 'max': 18.035179277504103}
+fwd 12 0.00275
+fwd 15 0.0195

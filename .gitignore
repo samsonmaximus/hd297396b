@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+# Full HARPS-RVBank table: download from CDS J/A+A/683/A125 (48 MB)
+table4.dat.gz
+*.parquet.tmp

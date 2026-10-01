@@ -1,0 +1,13 @@
+rejected C2 2 C3 0 C4 1 kept 106
+<string>:29: RuntimeWarning: Mean of empty slice
+<string>:29: RuntimeWarning: Mean of empty slice
+epochs 104 {'pre_072': 47, 'pre_oth': 33, 'post': 14, 'pre_183': 10} median err 1.3592115
+A=8: frac >= 32.26: 0.0003
+A=10: frac >= 32.26: 0.0005
+A=12: frac >= 32.26: 0.0018
+A=15: frac >= 32.26: 0.0215
+A=25: frac >= 32.26: 0.2060
+K used 5.72
+noise 99pct 6.3 max 12.0 frac>=32.26 0.0000
+act 99pct 9.0 max 20.1 frac>=32.26 0.0000
+kep 99pct 67.8 max 95.8 frac>=32.26 0.7192

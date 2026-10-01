@@ -1,0 +1,6 @@
+# The three HARPS spectra of HD 297396 taken after the HARPS-RVBank release (out-of-sample test, Sect. 8.4).
+# Values from the *_ccf_K5_A.fits header in each ESO ancillary tarball (DRS HARPS_3.8, mask K5, STAR,SKY mode).
+# BJD_TDB        RV_DRS(m/s)  DVRMS(m/s)  SN60   prog           ESO_dataset
+2459656.709122   16388.774   3.503   57.5  108.222V.001   ADP.2022-03-19T01:05:23.555
+2460389.657398   16374.805   5.707   25.1  106.21R4.001   ADP.2024-03-21T01:00:35.637
+2460629.861798   16386.248   3.921   43.9  106.21R4.001   ADP.2024-11-16T01:02:11.126

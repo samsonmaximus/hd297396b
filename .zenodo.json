@@ -1,0 +1,19 @@
+{
+  "title": "HD 297396 b: analysis code and data",
+  "description": "Code, data and pre-analysis documents for the HD 297396 b planet-candidate paper (archival HARPS-RVBank velocities).",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Fraser, Samson",
+      "affiliation": "Independent researcher, Sicamous, British Columbia, Canada"
+    }
+  ],
+  "keywords": [
+    "exoplanets",
+    "radial velocity",
+    "HARPS",
+    "HARPS-RVBank"
+  ],
+  "access_right": "open"
+}
