@@ -1,0 +1,20 @@
+{
+  "criteria_rejects": {
+    "C1_flag": [],
+    "C2_pipe": [
+      2456288.7799146
+    ],
+    "C3_drift": [],
+    "C4_snr": [
+      2456467.4636563
+    ],
+    "C5_moon": []
+  },
+  "plus51_bjd": 2454922.5269789,
+  "n_nights": {
+    "serval_in": 104,
+    "serval_out": 103,
+    "drs_in": 104,
+    "drs_out": 103
+  }
+}

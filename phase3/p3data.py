@@ -5,9 +5,12 @@ Builds the stacked [RV, dLW] vector used by the joint GP likelihood:
 nightly-binned, per-pipeline RVs plus the SERVAL differential line width,
 with pre/post-fibre epoch labels and programme (jitter-group) labels.
 """
+import os
 import numpy as np, pandas as pd
 
-CSV     = "/mnt/user-data/uploads/exoplancsv/jitter_clean/hd297396_data_v1.csv"
+_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+
+CSV     = os.path.join(_ROOT, "jitter_clean", "hd297396_data_v1.csv")
 FIBRE   = 2457174.5          # HARPS fibre upgrade, 2015-06-01 (BJD)
 P0      = 4.26836            # Phase-1/2 candidate period
 RVCOL   = {"drs": ("RVdrsnzp", "e_RVdrsnzp"), "serval": ("DRVmlcnzp", "e_DRVmlcnzp")}
@@ -110,7 +113,7 @@ if __name__ == "__main__":
 # uses a residual-based MAD clip, which Phase 1 deliberately avoided; these
 # loaders exist so the Phase 3 ladder can be quoted on the same rows as Phases
 # 1 and 4.
-V1DIR = "/mnt/user-data/uploads/exoplancsv/phase1/data"
+V1DIR = os.path.join(_ROOT, "phase1", "data")
 V1_LABELS = ["HARPS_pre_072", "HARPS_pre_183", "HARPS_pre_oth", "HARPS_post"]
 
 

@@ -7,7 +7,9 @@ authors:
     given-names: Samson
     affiliation: "Independent researcher, Sicamous, British Columbia, Canada"
     email: samsonmfraser@gmail.com
-license: MIT
+license:
+  - MIT
+  - CC-BY-4.0
 doi: ZENODODOI
 repository-code: "https://github.com/GITHUBUSER/hd297396b"
 keywords: [exoplanets, radial velocity, HARPS, HARPS-RVBank, Gaussian process]

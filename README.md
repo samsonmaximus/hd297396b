@@ -25,6 +25,9 @@ and the archive itself:
 |---|---|
 | `analysis/` | Reproduction scripts and their outputs (v12–v15). `analysis/README.md` maps each script to the paper section it produces. |
 | `phase3/` | The model-ladder pipeline that produces Table 3 (GP noise models, nested sampling, eccentricity, injection–recovery). `phase3/PREREGISTRATION_index.md` holds the pre-analysis criteria. |
+| `phase1/data/` | The frozen data set `data-v1` (DRS and SERVAL velocities, with and without the discrepant night) and its SHA-256 manifest: `cd phase1 && sha256sum -c data/MANIFEST.sha256`. |
+| `jitter_clean/hd297396_data_v1.csv` | The RVBank rows with Moon geometry, read by the phase-3 pipeline. |
+| `phase9/kinematics/`, `phase11/prot/` | Kinematic-age and per-season rotation outputs cited in `NUMBERS.md`. |
 | `data/HD297396_rvbank_full.csv` | The 108 HARPS-RVBank rows for HD 297396 (before night binning and rejection). |
 | `ancillary/` | Machine-readable nightly velocities and indicators (104 epochs) and the three later HARPS spectra, CDS format. Same files as the arXiv ancillary upload. |
 | `heldout/` | ESO HARPS RV-catalogue rows used for the held-out test (Sect. 5.2). |
