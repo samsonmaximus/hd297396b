@@ -10,7 +10,7 @@ Any number that depended on the dropped seeing-term model was recomputed under A
 | Periodogram peak, Δχ² 32.3 / 44.0; DRS 27.9 / 37.5 | | A `pg.py` |
 | Bootstrap FAP 1.4e-3 (14/10 000); 0/10 000; ≈3e-6 extrapolated | | A `fap.py` |
 | Baluev bound 4.9e-5 | | P (v11) |
-| 1214 searchable stars (1221 before the night-boundary correction of 2026-09-30) | | A `counts.py` |
+| 1214 stars with ≥ 20 nightly epochs over > 100 d (1221 before the night-boundary correction of 2026-09-30). Used for the trials factor up to v15; **v16 replaced it with the 1328 stars the survey actually searched** | | A `counts.py` |
 | 072.C-0488 jitter 7.7 / 3.1 m/s | | A `wn_checks.py` / `split.py` |
 | ΔlnZ ladder, all K in Table 3, M sin i under other treatments | | P `phase3/out/*.json`, `v10/numbers*.tex` |
 | Adopted P = 4.26837 ± 0.00027, K = 5.52 ± 0.84, T_conj | | P `phase3_final.json`, run `v1_serval_in_gauss_1p1c` |
@@ -44,7 +44,7 @@ Any number that depended on the dropped seeing-term model was recomputed under A
 | C2 flags 2 spectra (2012-12-27, G2 mask; 2013-06-23, also fails C4); 2 rejected in total | | A `core.py` (printout `rejected C2 2 C3 0 C4 1 kept 106`) |
 | Discrepant night: indicator z-scores within 1.2 robust σ; NZP 0.10 m/s; previous night −0.6 m/s | | inline check on `HD297396_rvbank_full.csv` (rows 58–59) |
 | Noyes τc = 23.7 d, Ro = 1.21, P_rot = 28.6 d (22.7–36.0 d); MH08 27.6 d; Ro(P0) = 0.18 → log R'HK ≈ −4.3 | | arithmetic (Noyes 1984 eq. 4 and R'HK–Ro fit; Mamajek & Hillenbrand 2008 eq. 5), B−V = 1.09. **v12 value 34.1 d was 8 × P0 pasted in error**; `phase9/kinematics/kinematics.json` has 23.6 d |
-| Baluev FAP 2.2e-3 (104), 6.7e-6 (103); archive-wide 1.7 (bootstrap, 104) and 8e-3 (Baluev, 103) | | B `baluev.py` (**v12's 4.9e-5 was wrong**) |
+| Baluev FAP 2.2e-3 (104), 6.7e-6 (103); archive-wide 2.0 (bootstrap 1.4e-3, 104) and 9e-3 (Baluev, 103), = FAP × 1328 × 1.05 (v16; was × 1214 = 1.7 and 8e-3 to v15) | | B `baluev.py` (**v12's 4.9e-5 was wrong**); trials arithmetic `search/search_counts.py` |
 | GP-weighted periodogram: ML velocity GP amplitude 0.1 m/s (prior floor); Δχ² 32.4 / 44.0; FAP 12/10⁴ | | B `gpmap.py` → `gpmap.json`; `gpfap.py` → `gpfap.json` |
 | Signal growth: inside 90 % band at 90/90 and 89/89 steps; conformity p 0.88 / 0.83; night step +7.7 | | B `growth.py` → `growth.json`; figure `figs_coh.py` |
 | Four blocks (recomputed): K 5.8/6.3/3.7/5.8, phase rms 15.4°, p 0.61 / 0.79 (3 dof); global K 5.72 ± 0.81 used for the band in Fig. 4 | | B `blocks.py` → `blocks_104.npy` (v12's figure used 5.75 ± 0.58, the 103-epoch value) |
@@ -137,3 +137,15 @@ Any number that depended on the dropped seeing-term model was recomputed under A
 | Mount Wilson log R'HK of comparison stars (GdS21 medians) | HD 105779 −4.887, HD 103891 −5.123, HD 47186 −5.070, HD 181433 −5.128; HD 22496 not in catalogue | VizieR J/A+A/646/A77 (2026-09-29) |
 | Seasonal stacking band and injection periods | 10–60 d; injections at 25 and 30 d | `Claude outputs/PROT.md` (phase 11) |
 | Perdelwitz et al. (2024) scale | their Fig. 8 and Sect. on comparison with Gomes da Silva et al.: "Cooler stars appear more active ... relative to the values given by Gomes da Silva et al." | A&A 683, A125 full text |
+
+## v16 and v17 additions (2026-10-04, 2026-10-06)
+
+| Number in the paper | Source |
+|---|---|
+| Sect. 2.2: 1328 stars searched (≥ 20 velocities on ≥ 15 nights over > 100 d), three peaks each from 1 d to the baseline | `search/rvbank_gls_survey_all_stars.csv`, `search/survey.py`; counted by `search/search_counts.py` |
+| Sect. 2.2: 227 peaks with FAP < 1e-4 matching no catalogued planet | 6 Sept report (`search/HD297396_report_2026-09-06.html`), triage table; not regenerable (catalogue snapshots not stored) |
+| Sect. 2.2: 109 planet-like peaks on 98 stars | `search/rvbank_vetting_results.csv` (`search_counts.py` checks the cuts) |
+| Sect. 2.2: 48 after the activity-indicator screen | 6 Sept report; reproduced exactly by the reconstructed screen in `search_counts.py` (no indicator FAP < 1 % at the period, all \|r\| < 0.4) |
+| Sect. 2.2: manual review of rotation-like periods, fibre-upgrade consistency and sampling | 6 Sept report, last row of the triage table |
+| Sect. 4.2, abstract, Table 5, Summary: 2.0 and 9 × 10⁻³ expected archive false alarms; band factor 1.05 | `search/search_counts.py` (1.95 and 9.3e-3) |
+

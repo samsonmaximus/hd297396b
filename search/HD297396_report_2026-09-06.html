@@ -1,0 +1,184 @@
+<html><head><meta charset="utf-8"><title>HD 297396 b — Radial-velocity exoplanet candidate: findings and verification record</title>
+<style>body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.35} table{border-collapse:collapse;margin:8px 0} td,th{border:1px solid #999;padding:4px 8px;font-size:10pt;vertical-align:top} th{background:#eee} h1{font-size:20pt} h2{font-size:15pt;margin-top:22px} h3{font-size:12pt} .note{background:#f6f6f6;padding:8px;border-left:4px solid #888}</style></head><body>
+
+<h1>HD 297396 b — a previously unreported radial-velocity planet candidate</h1>
+<p><b>Findings and verification record</b><br>Prepared 6 September 2026 · Private research notes, not for publication<br>Analysis: Claude (Anthropic) with [the author]; DACE and lightkurve runs performed by [the author]</p>
+
+<h2>1. Summary</h2>
+<p>An 18-year archive of HARPS radial velocities of the nearby K dwarf <b>HD 297396</b> (HIP 45533, TIC 293547742, TOI-6263) shows a periodic Doppler wobble with a period of <b>4.2681 days</b> and a semi-amplitude of <b>5.2–5.9 m/s</b>, corresponding to a planet of <b>minimum mass 11–12 Earth masses</b> on a circular orbit 0.047 AU from the star. The signal is detected at 7–8σ, is reproduced independently by two different velocity-extraction pipelines (SERVAL/RVBank and the Geneva DRS via DACE), is present in disjoint subsets of the data, survives the 2015 HARPS fibre upgrade, shows no counterpart in any stellar-activity indicator, and defeats its 1-day sampling alias by a Bayesian-information-criterion margin of 36. TESS photometry over eight sectors excludes any transit deeper than 58 ppm at this period, ruling out eclipsing-binary and grazing-giant impostors and showing that the orbit does not cross the stellar disc.</p>
+<p>The star already hosts <b>TOI-6263.01</b>, a TESS transiting candidate of ~1 Earth radius at 3.017 d, discovered after the RV data end. The 4.27 d signal is not that object (wrong period, and far too massive to have escaped TESS if it transited). No planet at 4.27 d appears in the NASA Exoplanet Archive, exoplanet.eu, the Open Exoplanet Catalogue, ExoFOP, DACE, or the literature. A weaker second RV signal at ~202 d (K ≈ 3 m/s, ~24 M⊕, 4σ) is also present and is noted as a tentative candidate.</p>
+<p><b>Assessed probability that HD 297396 b is a real planet: ~85–90%.</b> The residual uncertainty is dominated by the possibility of an instrument-wide HARPS systematic, which only observations with a second spectrograph can exclude.</p>
+
+<h2>2. The star</h2>
+<table>
+<tr><th>Identifiers</th><td>HD 297396 · HIP 45533 · TIC 293547742 · TOI-6263 · TYC 8174-00192-1 · Gaia DR3 5325767388444756480 · 2MASS J09164827-4918048</td></tr>
+<tr><th>Coordinates (ICRS)</th><td>RA 09h16m48.28s, Dec −49°18′04.85″ (139.1997°, −49.3008°); proper motion −214.4, +116.8 mas/yr</td></tr>
+<tr><th>Distance</th><td>46.26 pc (parallax 21.647 mas)</td></tr>
+<tr><th>Brightness</th><td>V = 10.23, TESS mag 9.13, K = 7.55, B−V = 1.10</td></tr>
+<tr><th>Spectral type</th><td>K dwarf (HARPS K5 cross-correlation mask; K0 in DACE header)</td></tr>
+<tr><th>Teff / log g / [M/H]</th><td>4717 ± 108 K / 4.61 ± 0.08 / +0.06 ± 0.09 (TIC v8.2)</td></tr>
+<tr><th>Radius / Mass / Density</th><td>0.711 ± 0.045 R☉ / 0.76 ± 0.09 M☉ / 2.98 ± 0.74 g cm⁻³</td></tr>
+<tr><th>Activity</th><td>log R'HK ≈ −4.66 (RVBank), moderately quiet; long-term magnetic cycle visible in FWHM, dLW and R'HK at ~2400–2800 d</td></tr>
+<tr><th>Companions</th><td>Gemini/Zorro speckle (2025-01-08): no companion detected; contrast Δ7.0 mag at 832 nm and Δ5.6 mag at 562 nm at sub-arcsecond separations. TIC contamination ratio 0.013</td></tr>
+</table>
+
+<h2>3. How the candidate was found</h2>
+<h3>3.1 Data</h3>
+<p>The analysis sandbox could not reach any astronomy archive (MAST, ExoFOP, NASA Exoplanet Archive, Zenodo all blocked), and a systematic scan of ~6,000 astronomy-related PyPI packages and of GitHub repositories found no bulk stellar photometry with star identifiers. The search therefore used <b>HARPS RVBank v2</b> (Trifonov et al. 2020; Perdelwitz et al. 2024), a public database of 252,615 systematics-corrected radial velocities of 5,239 stars observed by HARPS between 2003 and January 2022, mirrored on GitHub. RVBank velocities are extracted with SERVAL and corrected for nightly zero-point drifts; each spectrum also carries activity indicators (Hα, Na D1/D2, chromatic index CRX, differential line width dLW, CCF FWHM, bisector span, R'HK).</p>
+<h3>3.2 Survey pipeline</h3>
+<ul>
+<li>1,328 stars with ≥ 20 velocities and > 100 d baseline.</li>
+<li>Nightly binning (weighted mean), MAD outlier clipping, quality flag f_RV = 0 only.</li>
+<li>Generalised Lomb–Scargle periodogram with the pre- and post-June-2015 (fibre upgrade) velocity offsets and a linear trend fitted jointly at every trial frequency; periods from 1 d to the full baseline, 10× oversampled.</li>
+<li>Three peaks per star by prewhitening; analytic false-alarm probability (Baluev/Zechmeister form).</li>
+<li>Validation: blind recovery of HD 20794 b (18.3 d, K = 0.7 m/s) and the four strongest HD 10180 planets.</li>
+<li>Cross-match of every peak against the Open Exoplanet Catalogue (snapshot 2026-09-05), a 2020 NASA Exoplanet Archive snapshot and a 2026 confirmed-planet subset, by coordinates (90″) and by name, including yearly, lunar and daily aliases and 2:1/3:1 harmonics.</li>
+</ul>
+<h3>3.3 Triage</h3>
+<table>
+<tr><th>Stage</th><th>Count</th></tr>
+<tr><td>Peaks with FAP &lt; 10⁻⁴</td><td>659</td></tr>
+<tr><td>… matching a known planet or its alias/harmonic</td><td>268</td></tr>
+<tr><td>… unmatched</td><td>227 (199 stars)</td></tr>
+<tr><td>… planet-like (P &lt; ½ baseline, M sin i &lt; 13 M_Jup, K &gt; 2.5× median error, ≥ 25 nights)</td><td>109 (98 stars)</td></tr>
+<tr><td>… passing activity-indicator screen</td><td>48</td></tr>
+<tr><td>Best candidate after manual review (rotation-like periods, pre/post consistency, sampling)</td><td>HD 297396</td></tr>
+</table>
+
+<h2>4. HD 297396 b — the signal</h2>
+<h3>4.1 RVBank data for this star</h3>
+<p>108 HARPS spectra, 105 nights, BJD 2453031.78 – 2459567.84 (27 Jan 2004 – 19 Dec 2021); 91 nights before and 14 after the fibre upgrade. Median velocity error 1.38 m/s; median S/N 54. Programmes: 072.C-0488 (Mayor, HARPS GTO planet search; 48 spectra), 183.C-0972 (Lo Curto/Udry), 0100.C-0097, 078.C-0044 and others. Raw velocity rms 6.2 m/s.</p>
+<h3>4.2 Periodogram (RVBank / SERVAL velocities)</h3>
+<table>
+<tr><th>Period (d)</th><th>Power</th><th>Analytic FAP</th><th>Note</th></tr>
+<tr><td><b>4.2683</b></td><td>0.464</td><td>1.9 × 10⁻¹⁰</td><td>Top peak</td></tr>
+<tr><td>1.301 / 1.306</td><td>0.386 / 0.248</td><td>1.7 × 10⁻⁷</td><td>1-day aliases of 4.268 d (1/4.268 + 1 = 1/1.306)</td></tr>
+<tr><td>200.5</td><td>0.282</td><td>4.3 × 10⁻⁴</td><td>Second signal (see §8)</td></tr>
+<tr><td>4.219 / 4.319</td><td>0.209 / 0.194</td><td>—</td><td>Yearly aliases of 4.268 d</td></tr>
+</table>
+<p>Bootstrap: 0 of 400 shuffles of the velocities over the real observing dates reached the observed power (FAP &lt; 0.25%, the resolution of the test).</p>
+<h3>4.3 Periodogram (DACE / Geneva DRS CCF velocities — independent pipeline)</h3>
+<p>107 measurements (HARPS03 + HARPS15). Peak at <b>4.267721 d</b>, normalised power 0.358, log₁₀(FAP) = −5.21 with 4.43 m/s of fitted stellar jitter, amplitude 5.58 m/s, phase 79.8°. Listed aliases: 1.306 d (81% relative power), 1.301 d, 4.318 d, 4.218 d — identical alias structure to the RVBank analysis.</p>
+<h3>4.4 Orbital fits</h3>
+<table>
+<tr><th>Fit</th><th>P (d)</th><th>K (m/s)</th><th>e</th><th>M sin i (M⊕)</th><th>Other</th></tr>
+<tr><td>RVBank, 1-planet, circular, jitter 4.2 m/s (Claude)</td><td>4.26839 ± 0.00020</td><td>5.90 ± 0.65</td><td>0 (fixed)</td><td>12.4 (M★ = 0.76)</td><td>T_c = BJD 2455295.238 ± 0.070; rms 5.9 → 4.3 m/s</td></tr>
+<tr><td>DACE, 1-planet, e free, jitter fitted</td><td>4.268092</td><td>5.733</td><td>0.109</td><td>12.0</td><td>Log(Prob) −324.97, χ²ᵣ 1.04, wrms 5.00, ΔBIC 663.95</td></tr>
+<tr><td>DACE, 1-planet, e free, jitter fixed 4.43 (Nfree 100)</td><td>4.268057 ± 0.000221</td><td>5.735 ± 0.707</td><td>0.135 ± 0.116</td><td>12.0</td><td>Log(Prob) −324.89, χ²ᵣ 1.08, wrms 4.99, ΔBIC 682.49</td></tr>
+<tr><td>DACE, 2-planet, b circular, FWHM term 2.94 m/s</td><td>4.268108 ± 0.000236</td><td>5.222 ± 0.716</td><td>0 (fixed)</td><td>11.0</td><td>see §8</td></tr>
+<tr><td>DACE, 2-planet, b circular, c eccentric</td><td>4.268147 ± 0.000235</td><td>5.386 ± 0.723</td><td>0 (fixed)</td><td>11.4</td><td>see §8</td></tr>
+</table>
+<p>Across five model configurations the period agrees to 1 part in 40,000 and the amplitude stays within one error bar (5.2–5.9 m/s). The eccentricity is consistent with zero, as expected from tidal circularisation at a 4-day period.</p>
+<h3>4.5 Derived properties (M★ = 0.76 M☉, R★ = 0.711 R☉)</h3>
+<table>
+<tr><th>Quantity</th><th>Value</th></tr>
+<tr><td>Orbital period</td><td>4.2681 ± 0.0002 d</td></tr>
+<tr><td>Semi-major axis</td><td>0.047 AU (14.2 stellar radii)</td></tr>
+<tr><td>Minimum mass (M sin i)</td><td>11–12 M⊕ (± ~2 from K and M★ errors)</td></tr>
+<tr><td>Equilibrium temperature</td><td>~810 K (albedo 0.3) to ~885 K (albedo 0)</td></tr>
+<tr><td>Geometric transit probability</td><td>~7%</td></tr>
+<tr><td>Predicted transit epochs (if it transited)</td><td>T_c = BJD 2455295.238 + N × 4.26839; ±4–6 h at the TESS epochs</td></tr>
+<tr><td>Likely nature</td><td>Hot sub-Neptune / super-Earth; if 12 M⊕, radius ~2.5–3 R⊕</td></tr>
+</table>
+
+<h2>5. Tests applied to HD 297396 b</h2>
+<table>
+<tr><th>#</th><th>Test</th><th>Result</th><th>Verdict</th></tr>
+<tr><td>1</td><td>Statistical significance</td><td>Analytic FAP 1.9×10⁻¹⁰ (RVBank); 0/400 bootstrap; DACE log FAP −5.2 with jitter; K/σ_K = 7.3–8.1</td><td>Pass</td></tr>
+<tr><td>2</td><td>Independent reduction</td><td>SERVAL (RVBank) and DRS-CCF (DACE) give P = 4.2683 vs 4.2677 d, K = 5.9 vs 5.6 m/s</td><td>Pass</td></tr>
+<tr><td>3</td><td>Fibre-upgrade consistency</td><td>Pre-2015: K = 5.68 ± 0.20; post-2015: K = 5.40 ± 0.63 m/s; phase difference 6°</td><td>Pass</td></tr>
+<tr><td>4</td><td>Disjoint programme subsets</td><td>Mayor GTO (46 nights): own top peak 4.269 d, K = 6.5, phase 136°. All other programmes (59 nights, 17 yr): K = 4.6, phase 130°</td><td>Pass</td></tr>
+<tr><td>5</td><td>Activity indicators at 4.27 d</td><td>No periodogram power at P in Hα, Na D1, Na D2, CRX, dLW, FWHM, BIS or R'HK. Correlations with RV: Hα 0.31, R'HK 0.28, dLW 0.22, FWHM 0.21 (all driven by the long-term cycle), others &lt; 0.1</td><td>Pass</td></tr>
+<tr><td>6</td><td>Activity detrending (DACE)</td><td>Adding an RV–FWHM term (fitted 2.94 m/s) leaves K_b at 5.22 ± 0.72 m/s</td><td>Pass</td></tr>
+<tr><td>7</td><td>Rotation</td><td>log R'HK −4.66 for a K dwarf implies rotation of ~25–40 d, not 4.3 d; RV rms of only 6 m/s is incompatible with a 4-day rotator. Indicator periodograms peak at the magnetic cycle (2400–2800 d), not near 4 d</td><td>Pass</td></tr>
+<tr><td>8</td><td>Alias test (DACE, identical settings, jitter fixed)</td><td>4.268 d: ΔBIC 682.49, Log(Prob) −324.89, χ²ᵣ 1.08. 1.306 d: ΔBIC 718.61, Log(Prob) −342.95, χ²ᵣ 1.44, K = 3.81 ± 0.71, e = 0.23 ± 0.18. <b>ΔBIC = 36.1 in favour of 4.268 d</b> (likelihood ratio ~e¹⁸)</td><td>Pass — alias excluded</td></tr>
+<tr><td>9</td><td>Second-signal robustness</td><td>K_b changes by &lt; 1σ when the 202 d signal is added (circular or eccentric)</td><td>Pass</td></tr>
+<tr><td>10</td><td>TESS transit search at the RV ephemeris</td><td>See §6. No transit; 3σ limit 58 ppm</td><td>Non-transiting (expected for 93% of such planets)</td></tr>
+<tr><td>11</td><td>Stellar companions</td><td>Gemini speckle: none to Δ5.6–7 mag; TIC contamination 1.3%</td><td>Pass</td></tr>
+<tr><td>12</td><td>Prior detection</td><td>See §7. None found</td><td>Unreported</td></tr>
+<tr><td>13</td><td>Dynamical stability with TOI-6263.01</td><td>Separation ≈ 6.9 mutual Hill radii (&gt; 3.5 required)</td><td>Pass</td></tr>
+</table>
+
+<h2>6. TESS photometry</h2>
+<h3>6.1 Coverage</h3>
+<p>Eight sectors: 8, 9 (2019), 35, 36 (2021), 62, 63 (2023) at 30/10/3.3-min FFI cadence (TESS-SPOC), and 89, 90 (2025) at 20 s and 120 s cadence (SPOC).</p>
+<h3>6.2 SPOC Data Validation (sectors 89–90, report generated 2026-01-06)</h3>
+<p>One threshold-crossing event only: <b>TOI-6263.01</b>, P = 3.01666 ± 0.00041 d, epoch 3718.4698 BTJD, depth 223.5 ± 23.9 ppm, duration 2.2 h, Rp = 1.11 ± 0.92 R⊕, 18 transits, MES 8.1, SNR 9.2, bootstrap false-alarm 4×10⁻¹⁵, odd/even 2.1σ, secondary 2.8σ (not significant). Flag: difference-image centroid offset 23″ (~1 pixel) from the target at 4.4–5.0σ toward TIC 293547722 (T = 14.6) and TIC 391634154 (T = 17.6). At SNR 9 this test is unreliable, and LCO 1-m follow-up (2023-04-25) with a nearby-eclipsing-binary check was performed by TFOP; the candidate retains master priority 2. Nothing detected at 4.27 d.</p>
+<h3>6.3 Transit search at the RV ephemeris</h3>
+<table>
+<tr><th>Analysis</th><th>Control (TOI-6263.01)</th><th>At P = 4.26839 d</th></tr>
+<tr><td>Sectors 89+90, 120 s, biweight-flattened (Claude)</td><td>180 ± 21 ppm at the DV ephemeris; blind BLS 0.5–15 d top peak 3.0156 d, SNR 8.8</td><td>30 ± 25 ppm at predicted T_c; deepest box within ±10 h: 32 ppm; best box at any phase 70 ± 23 ppm; BLS 4.20–4.34 d: 127 ppm at 4.305 d, SNR 4.3 (noise)</td></tr>
+<tr><td>All 8 sectors, per-sector flatten + stitch ([the author], lightkurve)</td><td>152.4 ± 14.6 ppm (10.4σ); BLS 3.01790 d, SDE 59.9; all other peaks its harmonics</td><td>+27.7 ± 19.2 ppm (1.4σ); <b>3σ upper limit 57.7 ppm</b>; BLS SDE at 4.26839 d = −0.88; injection–recovery: 200 / 500 / 1000 ppm → 11.8 / 27.7 / 54.1σ; 43 epochs, 6690 in-transit cadences</td></tr>
+</table>
+<p>Interpretation: a 12 M⊕ planet (2.5–3 R⊕) would produce a 1000–1500 ppm transit; even a 1 R⊕ body would give ~150 ppm. The limit of 58 ppm means the 4.27 d planet does not transit — its orbit is inclined by more than ~4° from edge-on. This also excludes an eclipsing binary or grazing giant as the origin of the RV signal.</p>
+
+<h2>7. Prior-detection check ("previously unreported")</h2>
+<table>
+<tr><th>Source</th><th>Date checked</th><th>Result</th></tr>
+<tr><td>Open Exoplanet Catalogue (GitHub, imports NASA archive)</td><td>2026-09-05 snapshot</td><td>No entry</td></tr>
+<tr><td>NASA Exoplanet Archive (web)</td><td>2026-09-05</td><td>"Recognized … but we currently do not have any data on it" under HD 297396</td></tr>
+<tr><td>exoplanet.eu catalogue</td><td>2026-09-05</td><td>No entry for 297396 / HD 297396</td></tr>
+<tr><td>ExoFOP-TESS (TIC 293547742)</td><td>2026-09-06</td><td>TOI-6263.01 (3.018 d) only; 0 community candidates; 0 spectroscopy uploads; files are LCO photometry (2023) and Gemini speckle (2025)</td></tr>
+<tr><td>DACE (Geneva)</td><td>2026-09-06</td><td>Star page exists with HARPS data to late 2021; no published planet listed</td></tr>
+<tr><td>Web / ADS / arXiv search for "HD 297396"</td><td>2026-09-05</td><td>No planet or RV paper found</td></tr>
+</table>
+<p>Caveat: the star is on the TESS follow-up list at high priority, and any HARPS user opening DACE sees the 4.27 d peak in two clicks. The signal is unreported publicly; it may well be known internally to the Geneva/TFOP teams.</p>
+
+<h2>8. Second RV signal — candidate c (tentative)</h2>
+<table>
+<tr><th>Fit (DACE)</th><th>P (d)</th><th>K (m/s)</th><th>e</th><th>M sin i (M⊕)</th><th>Stats</th></tr>
+<tr><td>2-planet, both circular, FWHM term 2.94 m/s fixed, jitter 4.43 fixed (Nfree 99)</td><td>202.096 ± 1.009</td><td>3.138 ± 0.736</td><td>0 (fixed)</td><td>24.0</td><td>Log(Prob) −310.85, χ²ᵣ 0.80, wrms 4.29, ΔBIC 659.08, ΔAICc 639.17</td></tr>
+<tr><td>2-planet, b circular, c eccentric</td><td>201.023 ± 0.307</td><td>5.445 ± 1.656</td><td>0.550 ± 0.161</td><td>34.7</td><td>ω = 235 ± 21°</td></tr>
+</table>
+<p>Relative to the one-planet fit on the same settings (ΔBIC 682.49), the circular two-planet model improves BIC by 23.4 for one net extra parameter — "very strong" on the usual scale — and the residual rms falls from 4.99 to 4.29 m/s. The RVBank residual periodogram after removing b also peaks at 199.9 d (FAP 9×10⁻⁸). No activity indicator shows power near 200 d. The eccentric solution is poorly constrained (K only 3.3σ) and probably reflects the known bias of sparse long-period fits toward high e; the circular values are the conservative ones. Status: a statistically supported signal, ~4σ, awaiting MCMC and more data before being called a planet candidate proper. If real: a ~24 M⊕ (or more) body at ~0.6 AU.</p>
+
+<h2>9. System picture</h2>
+<table>
+<tr><th>Body</th><th>Period</th><th>Size / mass</th><th>Status</th><th>Source</th></tr>
+<tr><td>TOI-6263.01</td><td>3.017 d</td><td>~1.1 R⊕ (predicted ~0.8 M⊕, K ≈ 0.4 m/s — undetectable in HARPS)</td><td>TESS candidate, priority 2; open centroid flag</td><td>SPOC / TFOP</td></tr>
+<tr><td><b>HD 297396 b</b></td><td>4.2681 d</td><td>M sin i 11–12 M⊕, non-transiting</td><td>RV candidate, this work, ~85–90%</td><td>HARPS RVBank + DACE</td></tr>
+<tr><td>candidate c</td><td>~202 d</td><td>M sin i ~24 M⊕ (circular)</td><td>Tentative, 4σ</td><td>HARPS</td></tr>
+</table>
+<p>Inner pair period ratio 1.414. Mutual Hill-radius separation ≈ 6.9 (stable). A transiting inner planet with a non-transiting outer one at 14 stellar radii requires only a few degrees of mutual inclination — a common Kepler-system architecture.</p>
+
+<h2>10. Confidence assessment</h2>
+<p><b>~85–90% that HD 297396 b is a real planet.</b> This is an informal expert-style estimate, not a computed probability.</p>
+<p>For: 7–8σ amplitude; two independent pipelines; disjoint subsets agree in period, amplitude and phase; survives instrument rebuild; no activity counterpart; alias defeated (ΔBIC 36); stable under five model configurations and activity detrending; TESS excludes EB/grazing-giant explanations; no stellar companion in speckle imaging; host already has an independent planet candidate.</p>
+<p>Residual risks: (i) an unknown systematic common to all HARPS data — unlikely for a stable 18-year, 4.27-day sinusoid, but not excludable from HARPS alone; (ii) uncertainties in the stellar mass propagate to M sin i (±15%); (iii) the RVBank nightly binning blinded the original survey to P &lt; 1 d, irrelevant here; (iv) catalogue currency — a paper could appear at any time.</p>
+
+<h2>11. What would confirm it</h2>
+<ol>
+<li>Radial velocities from a second spectrograph (e.g. ESPRESSO) at ~6 predicted phases; expected amplitude 5.4 m/s. Predicted RV zero-crossing (planet at inferior conjunction): BJD 2455295.238 + N × 4.26839.</li>
+<li>Continued HARPS/ESPRESSO monitoring of TOI-6263 by the TESS follow-up programme; new ESO data become public 12 months after observation and appear automatically in DACE.</li>
+<li>MCMC posteriors (DACE MCMC tab, requires a free account) for formal uncertainties on K, e and the 202 d signal; numerical (permutation) FAP.</li>
+<li>Gaia DR3 RUWE and non-single-star flags for the host (not yet checked).</li>
+</ol>
+
+<h2>12. Files produced</h2>
+<ul>
+<li>HD297396_candidate.png — RVBank periodogram, phase-folded RVs, time series</li>
+<li>HD297396_TESS_fold.png — sectors 89+90 folded at the TOI and RV ephemerides</li>
+<li>HD297396_rvbank_v2.csv — the 108 RVBank measurements with indicators</li>
+<li>rvbank_gls_survey_all_stars.csv — periodogram results for all 1,328 surveyed stars</li>
+<li>rvbank_vetting_results.csv — activity vetting for the 109 planet-like signals</li>
+<li>survey.py, vet.py — the pipeline code</li>
+<li>SPOC DV summary and mini-report for TIC 293547742 (sectors 89–90), SPOC light curves for sectors 89 and 90</li>
+</ul>
+
+<h2>13. Plain-language glossary</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>Radial velocity (RV)</td><td>The star's speed toward or away from us, measured from the Doppler shift of its spectrum. A planet makes the star wobble, so its RV rises and falls periodically.</td></tr>
+<tr><td>K (semi-amplitude)</td><td>Half the peak-to-peak size of the wobble, in m/s. Bigger planet, closer orbit, or heavier planet → bigger K.</td></tr>
+<tr><td>M sin i</td><td>The minimum mass. RVs only measure the wobble along our line of sight, so the true mass is M sin i divided by sin(inclination); for random orientations it is usually within ~15% of the minimum.</td></tr>
+<tr><td>Periodogram</td><td>A plot of how well a sine wave of each trial period fits the data; a planet shows up as a sharp peak.</td></tr>
+<tr><td>FAP</td><td>False-alarm probability: the chance that pure noise would produce a peak this strong.</td></tr>
+<tr><td>Alias</td><td>A fake period created by the once-per-night observing rhythm; 4.268 d and 1.306 d are aliases of each other.</td></tr>
+<tr><td>Keplerian</td><td>A model orbit (period, amplitude, eccentricity, two angles) fitted to the velocities. "Adding a Keplerian" = assuming one more orbiting body.</td></tr>
+<tr><td>Jitter</td><td>Extra noise added to the error bars to account for stellar activity and unmodelled signals.</td></tr>
+<tr><td>BIC / ΔBIC</td><td>A score for a model that rewards fit quality and penalises extra parameters; lower is better; a difference of &gt; 10 between models is decisive.</td></tr>
+<tr><td>Activity indicators</td><td>Measurements of the star's spectral line shapes and chromospheric emission (FWHM, bisector, Hα, R'HK). Spots and magnetic activity change these; a planet does not.</td></tr>
+<tr><td>Transit</td><td>The dimming when a planet crosses the star's face. Only happens for nearly edge-on orbits (~7% chance here). "No transit" says the orbit is tilted, not that the planet is absent.</td></tr>
+<tr><td>TOI / ExoFOP / DACE</td><td>TESS Object of Interest (a TESS transit candidate); the TESS follow-up website; Geneva's radial-velocity data portal.</td></tr>
+</table>
+</body></html>

@@ -15,7 +15,7 @@ and the archive itself:
 | Period | 4.26837 ± 0.00027 d |
 | Semi-amplitude | 5.5 ± 0.8 m/s |
 | Minimum mass | 11.8 ± 1.9 M⊕ |
-| False-alarm probability (all epochs) | 1.4 × 10⁻³ (1.7 expected false alarms across the archive) |
+| False-alarm probability (all epochs) | 1.4 × 10⁻³ (2.0 expected false alarms across the 1328 searched stars) |
 | Phase coherence | within 15° over 1531 orbits |
 | Status | **Planet candidate.** All velocities are from one instrument, and the all-epoch significance depends on one discrepant night. One season with a second spectrograph will decide it. |
 
@@ -23,6 +23,7 @@ and the archive itself:
 
 | Folder / file | Contents |
 |---|---|
+| `search/` | The 6 September 2026 survey that found the signal: code, the survey and vetting tables, the notes written that day, and `search_counts.py`, which regenerates the counts of Sect. 2.2. See `search/README.md`. |
 | `analysis/` | Reproduction scripts and their outputs (v12–v15). `analysis/README.md` maps each script to the paper section it produces. |
 | `phase3/` | The model-ladder pipeline that produces Table 3 (GP noise models, nested sampling, eccentricity, injection–recovery). `phase3/PREREGISTRATION_index.md` holds the pre-analysis criteria. |
 | `phase1/data/` | The frozen data set `data-v1` (DRS and SERVAL velocities, with and without the discrepant night) and its SHA-256 manifest: `cd phase1 && sha256sum -c data/MANIFEST.sha256`. |

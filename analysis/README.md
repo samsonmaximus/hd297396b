@@ -11,7 +11,7 @@ Run from this folder. Each script prints the numbers it produces.
 | `core.py` | Five rejection criteria, nightly binning, the 104-epoch set (Sect. 2.3) |
 | `pg.py`, `split.py` | Periodogram with per-label offsets and jitters; subset fits (Sects. 4.2, 5.4) |
 | `fap.py` | Bootstrap global FAPs, 10 000 draws, 104 and 103 epochs (Sect. 4.2) |
-| `counts.py` | 1214 searchable stars (Sect. 2.2; 1221 before the 2026-09-30 night-boundary fix) |
+| `counts.py` | 1214 stars with ≥ 20 nightly epochs (the trials count up to v15; 1221 before the 2026-09-30 night-boundary fix). From v16 the trials count is the 1328 stars the survey searched: see `../search/` |
 | `alias.py` | 1.301-d alias simulations (Sect. 4.4) |
 | `heldout.py` | Held-out test across programme groups (Sect. 5.4) |
 | `xstar.py` | Cross-star control, 611 stars (Sect. 5.5; 612 before the 2026-09-30 night-boundary fix) |

@@ -1,0 +1,10 @@
+searched stars: 1328 (Sect. 2.2: 1328)
+peaks (three per star): 3984
+peaks with analytic FAP < 1e-4 in the stored table: 746 (the 6 Sept report gives 659; the paper uses neither)
+planet-like peaks: 109 on 98 stars (Sect. 2.2: 109 on 98)
+  cuts hold for all of them: P < baseline/2 True | >= 25 nights True | K > 2.5 x median error True | FAP < 1e-4 True
+activity screen (no indicator FAP < 1% at the period, all |r| < 0.4): 48 peaks on 44 stars (Sect. 2.2: 48)
+  HD 297396 among them: True
+band factor (1.0-1000 d over 1.05-1000 d, in frequency): 1.0501
+expected archive false alarms, 104 epochs: 1.4e-3 x 1328 x 1.050 = 1.95
+expected archive false alarms, 103 epochs: 6.7e-6 x 1328 x 1.050 = 9.34e-03
