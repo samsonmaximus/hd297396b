@@ -49,4 +49,17 @@ Byte-by-byte Description of file: hd297396_rv.dat
 
 Note: the epoch at BJD 2454922.53 is the discrepant night discussed in the paper;
       it is included here and in the primary analysis.
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: heldout.dat (whitespace-separated; '#' lines are comments)
+--------------------------------------------------------------------------------
+   Field  Units  Label       Explanations
+--------------------------------------------------------------------------------
+       1  d      BJD         Barycentric Julian Date (TDB)
+       2  m/s    RV_DRS      HARPS DRS 3.8 radial velocity, K5 mask, not
+                             zero-point corrected (contrast test of Sect. 5.2)
+       3  m/s    DVRMS       Pipeline radial-velocity uncertainty
+       4  ---    SN60        Signal-to-noise ratio in order 60
+       5  ---    prog        ESO programme ID
+       6  ---    ESO_dataset ESO archive product identifier
 ================================================================================

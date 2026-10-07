@@ -21,9 +21,10 @@ say("peaks with analytic FAP < 1e-4 in the stored table:", int((peaks.FAP < 1e-4
 
 v = pd.read_csv("rvbank_vetting_results.csv")
 say("planet-like peaks:", len(v), "on", v.target.nunique(), "stars (Sect. 2.2: 109 on 98)")
-say("  cuts hold for all of them: P < baseline/2", bool((v.P < v.span / 2).all()),
-    "| >= 25 nights", bool((v.nn >= 25).all()), "| K > 2.5 x median error", bool((v.K > 2.5 * v.med_err).all()),
-    "| FAP < 1e-4", bool((v.FAP < 1e-4).all()))
+say("  the four cuts hold for all of them: P < baseline/2", bool((v.P < v.span / 2).all()),
+    "| M sin i < 13 M_Jup", bool((v.msini < 13).all()), f"(largest {v.msini.max():.1f})",
+    "| K > 2.5 x median error", bool((v.K > 2.5 * v.med_err).all()), "| >= 25 nights", bool((v.nn >= 25).all()))
+say("  and all have FAP < 1e-4:", bool((v.FAP < 1e-4).all()))
 
 # Activity-indicator screen. The 6 Sept report gives the count (48) but its code was not stored.
 # This rule reproduces the count exactly; it is a reconstruction, not the recorded code.

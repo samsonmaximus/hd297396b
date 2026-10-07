@@ -18,8 +18,8 @@ in the paper.
 | Number | Source |
 |---|---|
 | 1328 searched stars | Rows of `rvbank_gls_survey_all_stars.csv` (`search_counts.py`). |
-| 227 peaks matching no catalogued planet | The triage table of the 6 Sept report. The catalogue snapshots it used were not stored, so this count cannot be regenerated. |
-| 109 planet-like peaks on 98 stars | Rows of `rvbank_vetting_results.csv`. `search_counts.py` checks the four cuts on every row. |
+| 227 peaks matching no catalogued planet | The triage table of the 6 Sept report. The catalogue snapshots it used were not stored, so this count cannot be regenerated. The table does not add up on its own: 659 peaks, 268 matched, 227 unmatched leaves 164 peaks unaccounted for. Probably they were removed at the periods of the observing window (the year, the day, the lunar month and their fractions; `vet.py` has a function for it), since none of the 109 planet-like peaks lies at such a period while 140 of the 746 stored peaks with FAP < 10⁻⁴ do. The paper therefore says "in the triage recorded that day". |
+| 109 planet-like peaks on 98 stars | Rows of `rvbank_vetting_results.csv`. `search_counts.py` checks the four cuts (P < half the baseline, M sin i < 13 M_Jup, K > 2.5 times the median error, ≥ 25 nights) on every row. |
 | 48 after the activity-indicator screen | The triage table of the report. The screen's code was not stored. Requiring that no indicator has a false-alarm probability below 1 % at the candidate period, and that no indicator correlates with the velocities at \|r\| ≥ 0.4, gives exactly 48 peaks on 44 stars, HD 297396 among them. This is a reconstruction. It is probably the rule that was used, but the record cannot prove it. |
 | The final choice | Manual review of the 48 for rotation-like periods, consistency across the 2015 fibre upgrade, and sampling. The report names these criteria. No written rule was followed. |
 
