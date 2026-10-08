@@ -69,6 +69,6 @@ the code and results were checked is described in the paper's acknowledgements.
 
 ## Citation and licence
 
-Cite the paper above and this archive: Zenodo DOI ZENODODOI (see `CITATION.cff`).
+Cite the paper above and this archive: Zenodo DOI 10.5281/zenodo.23249329 (see `CITATION.cff`).
 Code: MIT (`LICENSE`). Data, results and documentation: CC BY 4.0 (`LICENSE-DATA.md`). The
 velocities derive from HARPS-RVBank (Perdelwitz et al. 2024, A&A 683, A125); please cite it too.

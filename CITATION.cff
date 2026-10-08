@@ -10,7 +10,7 @@ authors:
 license:
   - MIT
   - CC-BY-4.0
-doi: ZENODODOI
+doi: 10.5281/zenodo.23249329
 repository-code: "https://github.com/samsonmaximus/hd297396b"
 keywords: [exoplanets, radial velocity, HARPS, HARPS-RVBank, Gaussian process]
 preferred-citation:
