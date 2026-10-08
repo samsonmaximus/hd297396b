@@ -1,10 +1,12 @@
 # HD 297396 b — analysis code and data
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23249329.svg)](https://doi.org/10.5281/zenodo.23249329)
+
 Code, data and pre-analysis documents behind
 
 > **Fraser, S. (2026). A 4.27-day Neptune-mass planet candidate around the K dwarf HD 297396 in
 > 18 years of archival HARPS velocities.** *Submitted to the Open Journal of Astrophysics.*
-> arXiv: ARXIVID
+> Preprint: [`Fraser2026_HD297396b.pdf`](Fraser2026_HD297396b.pdf) in this repository; archived at Zenodo, [doi:10.5281/zenodo.23249329](https://doi.org/10.5281/zenodo.23249329). arXiv ID to follow.
 
 The paper reports a 4.27-d signal in 104 nightly HARPS velocities of the K3–K4 dwarf HD 297396
 (TOI-6263), spanning 17.9 years. It is tested against false alarms, rotation, instrument effects
